@@ -41,4 +41,7 @@
   investment advice. It is intended only for informational purposes, and 
   the user is not recommended to use the tool to make actual investment 
   decisions. Seek a duly licensed professional for investment advice.
-
+  
+##
+If you find portfolio_sortino_ratio useful and would like to support its continued development, feel free to send a cup of coffee! :) <br><br>
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://paypal.me/ElliotLayden?locale.x=en_US)
