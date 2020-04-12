@@ -6,16 +6,16 @@ csv_dir = fullfile(script_path,'sample_portfolio');
 %  [Sortino ratio, Sharpe ratio, total return, Downside Risk, SD, Drawdown]
 outcomeWeights = [1,0,1,.09,0,1.5];
 
-nRandom = 10000;  
+nRandom = 1000;  
 minWeight = .05; maxWeight = 1; limitTickers = 10;
-plotScatter = true; plotCorrs = false;
-useParallel = true; 
+plotScatter = true; plotCorrs = true;
+useParallel = false; 
 
 % Run optimization:
 results = portfolio_sortino_ratio(csv_dir, 'nRandom', nRandom, ...
     'outcomeWeights', outcomeWeights, 'minWeight', minWeight, ...
     'maxWeight', maxWeight,'limitTickers', limitTickers, ...
-    'plotScatter', true, 'plotCorrs', plotCorrs,'parallel',useParallel) %#ok
+    'plotScatter', plotScatter, 'plotCorrs', plotCorrs,'parallel',useParallel) %#ok
 
 % View optimized weights:
 results.weights

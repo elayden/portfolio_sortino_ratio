@@ -167,8 +167,8 @@ limitTickers = parsed.limitTickers;
 minWeight = parsed.minWeight; maxWeight = parsed.maxWeight;
 plotScatter = parsed.plotScatter; plotCorrs = parsed.plotCorrs;
 useParallel = parsed.parallel;
-if nRandom <=0; nRandom = 10000; end;
-if length(outcomeWeights)~=6; 
+if nRandom <=0; nRandom = 10000; end
+if length(outcomeWeights)~=6
     warning('''outcomeWeights'' should be a 1x6 vector. Please check your inputs.')
     outcomeWeights = [1,0,1,0,0,1]; 
 end
@@ -224,7 +224,7 @@ axesLabels = {'Sortino','Sharpe','Return','DownsideRisk','SD','Drawdown'};
 
 % Permuted weights:
 delete(hWait1); 
-if useParallel; 
+if useParallel
     hCheck = gcp('nocreate');
     if isempty(hCheck) || ~hCheck.Connected
         hPool = parpool; 
@@ -298,7 +298,8 @@ else
 end
 if useParallel && (isempty(hCheck) || ~hCheck.Connected)
     delete(hPool)
-else delete(hWait)
+else
+    delete(hWait)
 end
 
 % Calculate Mahalanobis Distance of each permuted portfolio to ideal:
@@ -417,7 +418,8 @@ targetSize = 200;
 if plotScatter
     if nRandom > 10000
         sparseIx = randperm(nRandom,10000);
-    else sparseIx = 1:nRandom;
+    else
+        sparseIx = 1:nRandom;
     end
     [~,ix_axes] = sort(outcomeWeights,'descend');
     fig_title = [axesLabels{ix_axes(1)},' x ', axesLabels{ix_axes(2)},' x ',...
@@ -452,9 +454,16 @@ if plotScatter
     hScatter.SizeData = sizes;
     leg_ax = axes('Parent',hfig,'Visible','off'); hold(leg_ax,'on'); h_leg = zeros(1,2);
     for ix = 1:2; h_leg(ix) = scatter(1,1,1,'filled','MarkerFaceColor','b','Parent',leg_ax); end
-    [h_legend, icons] = legend(mainAx,h_leg,'Location','northwest','Labels',...
-        {num2str(round(min(permData(sparseIx,ix_axes(5))),4)), ...
-        num2str(round(max(permData(sparseIx,ix_axes(5))),4))},'FontName','Arial','FontSize',14);
+    
+%     [h_legend, icons] = legend(mainAx, h_leg, 'Location','northwest','Labels',...
+%         {num2str(round(min(permData(sparseIx,ix_axes(5))),4)), ...
+%         num2str(round(max(permData(sparseIx,ix_axes(5))),4))},'FontName','Arial','FontSize',14);
+
+    axes(mainAx)
+    [h_legend, icons] = legend(h_leg, {num2str(round(min(permData(sparseIx,ix_axes(5))),4)), ...
+        num2str(round(max(permData(sparseIx,ix_axes(5))),4))}, 'Location','northwest',...
+        'FontName','Arial','FontSize',14);
+    
     icons(3).Children.MarkerSize = 2; icons(4).Children.MarkerSize = 8;
     axes(mainAx)
     set(get(h_legend,'title'),'String',axesLabels{ix_axes(5)},...
@@ -478,7 +487,7 @@ end
 %% Callbacks:
 function change_tool(~, ~, which_tool)
      switch which_tool
-        case 1, % Rotate
+        case 1 % Rotate
             if ~rotate_on
                 zoom off; rotate3d on; 
                 rotate_on = true; zoom_on = false; crosshair_on = false;
@@ -488,7 +497,7 @@ function change_tool(~, ~, which_tool)
                 rotate3d off; rotate_on = false; h_tools(1).Checked = 'off';
             end
                 
-        case 2, % Zoom
+        case 2 % Zoom
             if ~zoom_on
                 zoom on; rotate3d off; 
                 zoom_on = true; rotate_on = false; crosshair_on = false;
@@ -497,7 +506,7 @@ function change_tool(~, ~, which_tool)
             else
                 zoom off; zoom_on = false; h_tools(2).Checked = 'off';
             end
-         case 3, % Cross-hair
+         case 3 % Cross-hair
              if ~crosshair_on
                 zoom off; rotate3d off; 
                 zoom_on = false; rotate_on = false; crosshair_on = true;
