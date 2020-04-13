@@ -1,4 +1,6 @@
-# portfolio_sortino_ratio
+# Portfolio Sortino Ratio
+
+<p align="middle"><img align="middle" src="https://github.com/elayden/portfolio_sortino_ratio/blob/master/screen_shot.PNG" width="850 hspace="20" /> </p>    
 
 *Info:
   This function optimizes portfolio weights based on a user-specified 
