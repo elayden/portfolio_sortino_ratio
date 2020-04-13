@@ -2,7 +2,7 @@
 
 <p align="middle"><img align="middle" src="https://github.com/elayden/portfolio_sortino_ratio/blob/master/screen_shot.PNG" width="850 hspace="20" /> </p>    
 
-*Info:
+## Info:
   This function optimizes portfolio weights based on a user-specified 
   weighted linear combination of the Sortino ratio, Sharpe ratio, average 
   total return, average downside risk, average standard deviation of 
@@ -22,14 +22,15 @@
   2006-2018) to gain a better understanding of use cases. (See example
   below.) 
 
-*Note: you must keep ^IRX.csv (13 week treasury bill rates) in the util 
-  folder up-to-date for risk free rate data. Download historical data at
+## Note on risk free rate data (IRX): 
+  You must keep util/^IRX.csv (13 week treasury bill rates) up-to-date for risk free rate data. Download historical data at
   <https://finance.yahoo.com/quote/%5EIRX/history?>. If other data in
   your portfolio is more recent than ^IRX.csv, that additional data will
   be discarded automatically. Also, statistics will only go back as far
   as the most recent oldest data across all tickers.
 
-*Cautionary note: your results may be skewed if your data does not go 
+## Cautionary note: 
+  Your results may be skewed if your data does not go 
   back sufficiently far and includes only one portion of a market cycle 
   (e.g., all bull market, no recessions). To gain insight into 
   performance over the whole market cycle, try to include data going back 
@@ -39,7 +40,8 @@
   during major market corrections. In the case of major recessions these 
   losses can sometimes exceed -40% in a calendar year.
 
-*Disclaimer: This open-source research tool is not intended to provide 
+## Disclaimer: 
+  This open-source research tool is not intended to provide 
   investment advice. It is intended only for informational purposes, and 
   the user is not recommended to use the tool to make actual investment 
   decisions. Seek a duly licensed professional for investment advice.
